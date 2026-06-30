@@ -6,17 +6,20 @@ team_name: "K3-SpiritCourage"
 primary_contact:
   name: "Chitturi Rupesh Siva Mani Kanta"
   email: "2300031153cseh1@gmail.com"
-  phone: "TODO — fill in before final portal submission"  # not available to the assistant; team must fill this in
+  phone: "7995665471"
 
 team_members:
   - name: "Chitturi Rupesh Siva Mani Kanta"
     email: "2300031153cseh1@gmail.com"
+    phone: "7995665471"
     role: "Team Lead"
   - name: "Bolisetty NagaVenkataTejesh"
     email: "2300030088cse3@gmail.com"
+    phone: "8885266063"
     role: "ML Engineer"
   - name: "Dasaradha Sai Boyina"
     email: "2300030104cseh1@gmail.com"
+    phone: "8233535345"
     role: "Data Engineer"
 
 # ============================================================================
