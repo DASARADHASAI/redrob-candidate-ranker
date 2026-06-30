@@ -22,7 +22,7 @@ team_members:
 # ============================================================================
 # Code and reproducibility
 # ============================================================================
-github_repo: "TODO — filled in once the repo is pushed (see Task: Push repo to GitHub)"
+github_repo: "https://github.com/DASARADHASAI/redrob-candidate-ranker"
 
 sandbox_link: "N/A — the live hack2skill submission form for this event does not
   include a separate sandbox-link field (only GitHub repo URL, pitch-deck PDF,
