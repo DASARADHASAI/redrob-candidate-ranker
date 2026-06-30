@@ -1,0 +1,100 @@
+# Redrob Hackathon — Submission Metadata
+# Team K3-SpiritCourage
+
+team_name: "K3-SpiritCourage"
+
+primary_contact:
+  name: "Chitturi Rupesh Siva Mani Kanta"
+  email: "2300031153cseh1@gmail.com"
+  phone: "TODO — fill in before final portal submission"  # not available to the assistant; team must fill this in
+
+team_members:
+  - name: "Chitturi Rupesh Siva Mani Kanta"
+    email: "2300031153cseh1@gmail.com"
+    role: "Team Lead"
+  - name: "Bolisetty NagaVenkataTejesh"
+    email: "2300030088cse3@gmail.com"
+    role: "ML Engineer"
+  - name: "Dasaradha Sai Boyina"
+    email: "2300030104cseh1@gmail.com"
+    role: "Data Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "TODO — filled in once the repo is pushed (see Task: Push repo to GitHub)"
+
+sandbox_link: "N/A — the live hack2skill submission form for this event does not
+  include a separate sandbox-link field (only GitHub repo URL, pitch-deck PDF,
+  and ranked-candidates XLSX). A hosted sandbox can be added on request if
+  Stage 3 review requires one."
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "Linux sandbox (Ubuntu 22.04.5 LTS, aarch64) — Cowork agent environment"
+  cpu_cores: 4
+  ram_gb: 4
+  python_version: "3.10.12"
+  os: "Ubuntu 22.04.5 LTS"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+  measured_runtime_seconds: 18
+  measured_peak_ram_mb: 660
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude (Anthropic) for: extracting and summarizing the hackathon bundle
+  docs (JD, submission spec, schema, signals doc), inspecting the real
+  candidates.jsonl data to find concrete trap patterns (e.g. a Backend
+  Engineer with "advanced" self-rated NLP/CV/Speech skills but low
+  skill_assessment_scores — a corroboration mismatch), designing the
+  rule-based scoring approach, writing rank.py, and iterating on output
+  quality (reasoning variety, capitalization, runtime/memory testing). No
+  candidate data was sent to any hosted LLM API as part of the ranking step
+  itself; rank.py makes zero network calls and has zero third-party
+  dependencies.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Transparent rule-based ranker with a light, curated text-similarity term.
+  Title/career-history evidence ("domain_relevance") gates how much credit a
+  candidate's skills list can earn, directly defeating the keyword-stuffing
+  trap (an AI-keyword-stuffed "Marketing Manager" cannot outrank a real
+  ranking/search engineer). The four "absolutely need" skill areas
+  (embeddings/retrieval, vector DB/hybrid search, Python, ranking-evaluation)
+  are matched against skills[], then weighted by duration_months,
+  endorsements, and cross-checked against redrob_signals.skill_assessment_scores
+  to discount inflated self-rated proficiency. JD disqualifiers (consulting-only
+  career, research-only, LangChain-only <12mo AI exposure, architecture-only
+  18mo+ with no code, CV/speech/robotics without NLP/IR, title-chasing) are
+  multiplicative penalties, not hard cutoffs. Years-of-experience, location,
+  and notice period are smooth soft-preference functions, not filters.
+  Behavioral signals (recency, recruiter response rate, open_to_work,
+  verification) act as a bounded multiplicative availability modifier. Two
+  honeypot heuristics (expert-proficiency-with-~0-duration; career-history
+  duration inconsistent with stated years_of_experience) exclude 68
+  candidates pre-ranking. Runtime ~18s / ~660MB peak RAM on a 4-core
+  CPU-only sandbox for the full 100K pool.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true

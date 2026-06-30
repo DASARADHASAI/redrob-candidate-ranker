@@ -1,0 +1,9 @@
+# rank.py itself has ZERO third-party dependencies — Python 3 standard
+# library only (json, csv, math, random, re, argparse, datetime, time).
+# This is intentional: it removes any risk of the Stage 3 reproduction
+# sandbox failing due to a missing/incompatible package, and keeps the
+# ranking step fully offline.
+#
+# openpyxl is only needed for csv_to_xlsx.py, the portal-upload format
+# converter (not part of the scored ranking step).
+openpyxl==3.1.2
